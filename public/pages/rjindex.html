@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rajasthan Wage-Rate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#3498db',
+              secondary: '#2c3e50',
+              accent: '#e74c3c',
+              light: '#ecf0f1',
+              dark: '#2c3e50',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-in-out',
+              'fade-in-down': 'fadeInDown 0.5s ease-in-out',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              fadeInDown: {
+                '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+            },
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="../css/rjindex.css">
+  </head>
+  <body class="min-h-screen">
+    <!-- Header with Particle Background -->
+    <header class="text-center py-5 header-gradient text-white relative overflow-hidden">
+      <div class="absolute inset-0 bg-black opacity-20"></div>
+      <div class="container mx-auto px-6 relative z-10">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-wide mb-4 animate-fade-in-down">Rajasthan Wage-Rate</h1>
+        <p class="text-xl md:text-2xl opacity-90 animate-fade-in-down" style="animation-delay: 0.2s">Comprehensive wage data for various job categories</p>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+      <!-- Search and Filter Section -->
+      <div class="mb-12 animate-fade-in-down" style="animation-delay: 0.3s">
+        <div class="max-w-2xl mx-auto relative">
+          <div class="relative">
+            <input
+              type="text"
+              id="search-bar"
+              placeholder="Search for a job (e.g., Welder, Accountant)..."
+              class="w-full px-6 py-4 rounded-full border-2 border-primary focus:border-accent focus:ring-2 focus:ring-accent focus:ring-opacity-50 text-lg shadow-lg"
+              onkeyup="searchJobs()"
+            />
+            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-accent">
+              <i class="fas fa-search text-xl"></i>
+            </button>
+          </div>
+          <ul id="suggestions-list" class="search-suggestions absolute left-0 right-0 mt-1 bg-white rounded-lg shadow-xl z-50 hidden"></ul>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4 mt-8">
+          <button onclick="toggleFilter('Unskilled')" class="skill-gradient-unskilled text-white px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 filter-btn">
+            <i class="fas fa-hard-hat mr-2"></i> Unskilled
+          </button>
+          <button onclick="toggleFilter('Semi-skilled')" class="skill-gradient-semiskilled text-white px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 filter-btn">
+            <i class="fas fa-tools mr-2"></i> Semi-skilled
+          </button>
+          <button onclick="toggleFilter('Skilled')" class="skill-gradient-skilled text-white px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 filter-btn">
+            <i class="fas fa-user-tie mr-2"></i> Skilled
+          </button>
+          <button onclick="toggleFilter('Highly Skilled')" class="skill-gradient-highlyskilled text-white px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 filter-btn">
+            <i class="fas fa-graduation-cap mr-2"></i> Highly Skilled
+          </button>
+        </div>
+      </div>
+
+      <!-- Job Categories -->
+      <div id="job-categories">
+        <!-- Unskilled -->
+        <div class="category mb-16" data-category="Unskilled">
+          <div class="flex items-center mb-8">
+            <div class="skill-gradient-unskilled w-12 h-12 rounded-full flex items-center justify-center text-white text-2xl mr-4">
+              <i class="fas fa-hard-hat"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-800">Unskilled Jobs</h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Cards will be generated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Semi-skilled -->
+        <div class="category mb-16" data-category="Semi-skilled">
+          <div class="flex items-center mb-8">
+            <div class="skill-gradient-semiskilled w-12 h-12 rounded-full flex items-center justify-center text-white text-2xl mr-4">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-800">Semi-skilled Jobs</h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Cards will be generated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Skilled -->
+        <div class="category mb-16" data-category="Skilled">
+          <div class="flex items-center mb-8">
+            <div class="skill-gradient-skilled w-12 h-12 rounded-full flex items-center justify-center text-white text-2xl mr-4">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-800">Skilled Jobs</h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Cards will be generated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Highly Skilled -->
+        <div class="category mb-16" data-category="Highly Skilled">
+          <div class="flex items-center mb-8">
+            <div class="skill-gradient-highlyskilled w-12 h-12 rounded-full flex items-center justify-center text-white text-2xl mr-4">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-800">Highly Skilled Jobs</h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Cards will be generated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal Overlay (hidden by default) -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 modal-overlay hidden">
+      <div id="modal-content" class="bg-white rounded-xl shadow-2xl max-w-md w-full p-8 modal-content relative">
+        <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-accent text-2xl">
+          <i class="fas fa-times"></i>
+        </button>
+        <div id="modal-body">
+          <!-- Content will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-secondary to-gray-900 text-white py-12">
+      <div class="container mx-auto px-6 text-center">
+        <div class="flex justify-center space-x-6 mb-8">
+          <a href="#" class="text-2xl transition-all duration-300 hover:text-accent hover:-translate-y-1">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-2xl transition-all duration-300 hover:text-blue-500 hover:-translate-y-1">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="text-2xl transition-all duration-300 hover:text-gray-700 hover:-translate-y-1">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+        <p class="text-sm opacity-80">
+          &copy; 2023 Rajasthan Wage Portal. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="../javascript/rjindex.js"></script>
+  </body>
+</html>

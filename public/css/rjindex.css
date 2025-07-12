@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background-attachment: fixed;
+}
+
+.header-gradient {
+  background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+}
+
+.skill-gradient-unskilled {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+}
+
+.skill-gradient-semiskilled {
+  background: linear-gradient(135deg, #20c997 0%, #099268 100%);
+}
+
+.skill-gradient-skilled {
+  background: linear-gradient(135deg, #228be6 0%, #1971c2 100%);
+}
+
+.skill-gradient-highlyskilled {
+  background: linear-gradient(135deg, #7950f2 0%, #5f3dc4 100%);
+}
+
+.card-hover-effect {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  animation: fadeInDown 0.3s ease-out;
+}
+
+.search-suggestions {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-suggestions::-webkit-scrollbar {
+  width: 8px;
+}
+
+.search-suggestions::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.search-suggestions::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.search-suggestions::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.highlight {
+  background-color: rgba(255, 255, 0, 0.3);
+  padding: 0 2px;
+  border-radius: 2px;
+}
